@@ -4,9 +4,7 @@
     Author     : Daniel B. Silva
 --%>
 
-<%@page import="java.awt.Image"%>
-<%@page import="javax.imageio.ImageIO"%>
-<%@page import="java.io.File"%>
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="br.com.fatecpg.cinema.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,9 +24,12 @@
         String senha = request.getParameter("senha");
         String nome = request.getParameter("nome");
         String cargo = request.getParameter("cargo");
-        Image foto = ImageIO.read(new File(request.getParameter("foto")));
         try{
-            Admin.addAdmin(login, senha, nome, cargo, foto);
+
+            Admin.addAdmin(login, senha, nome, cargo);
+           
+                 
+            
             response.sendRedirect(request.getRequestURI());
         }catch(Exception e){
             error = e.getMessage();
@@ -51,9 +52,8 @@
                     Digite uma senha:<br/> <input type="password" name="senha"/><br/><br/>
                     Digite seu nome:<br/><input type="text" name="nome"/><br/><br/>
                     Digite seu cargo:<br/><input type="text" name="cargo"/><br/><br/>
-                    Escolha uma imegem para te representar:<br/><input type="file" name="foto"/><br/><br/>
                     
-                    <input type="submit" name="formNewAmin" value="Cadastrar"/>
+                    <input type="submit" name="formNewAdmin" value="Cadastrar"/>
                 </form>
             </fieldset>
             

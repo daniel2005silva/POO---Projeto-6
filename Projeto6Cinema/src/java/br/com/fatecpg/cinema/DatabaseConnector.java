@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DatabaseConnector {
     private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String URL = "jdbc:derby://localhost:1527/cinemaita  ";
+    private static final String URL = "jdbc:derby://localhost:1527/cinemaita";
     private static final String USER = "app";
     private static final String PASS = "app";
     
