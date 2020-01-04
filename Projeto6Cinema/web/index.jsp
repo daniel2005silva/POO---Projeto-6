@@ -21,7 +21,7 @@ CREATE TABLE admi(
     id BIGINT not null primary key 
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1)
-    , cpf_login numeric(15,0) not null
+    , cpf_login varchar(20) not null
     , senha varchar(30) not null
     , nome varchar(50) not null
     , cargo varchar(30) not null
@@ -51,10 +51,10 @@ CREATE TABLE cliente(
     id BIGINT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1)
-    , cpf_login numeric(15,0) not null
+    , cpf_login varchar(20) not null
     , senha varchar(30) not null
     , nome varchar(50) not null
-    , nascimento date not null
+    , nascimento varchar(30) not null
     , email varchar(30)
 );
 
@@ -78,8 +78,8 @@ CREATE TABLE funcionario(
     , nome varchar(30) not null
 );
 
-INSERT INTO funcionario VALUES
-(default, 22222222222, 'Daniel');
+INSERT INTO admi VALUES
+(default, '22222222222', '1234', 'Daniel', 'Chefe');
 
 ALTER TABLE bilhete
 	add CONSTRAINT fk_bilhete_cliente

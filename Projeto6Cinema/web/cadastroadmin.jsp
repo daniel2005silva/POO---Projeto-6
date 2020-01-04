@@ -20,7 +20,7 @@
         }
     }
     if(request.getParameter("formNewAdmin")!=null){
-        long login = Long.parseLong(request.getParameter("login"));
+        String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         String nome = request.getParameter("nome");
         String cargo = request.getParameter("cargo");
