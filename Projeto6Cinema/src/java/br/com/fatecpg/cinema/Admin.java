@@ -98,10 +98,21 @@ public class Admin {
     }
     
     public static void removeAdmin( long id) throws Exception{
-        String SQL = "DELETE FROM ADMI WHERE CD_ADMINISTRADOR = ?";
+        String SQL = "DELETE FROM ADMI WHERE id = ?";
         Object parameters[] = {id};
         DatabaseConnector.execute(SQL, parameters);
     }
     
-   
+    public static Admin editAdmin(String login, String senha, String nome, String cargo,long id) throws Exception{
+        String SQL = "UPDATE admi SET cpf_login = ?, senha = ?, nome = ?, cargo = ? WHERE id = ?";
+        Object parameters[] = {login, senha, nome, cargo, id};
+        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
+        if(list.isEmpty()){
+            return null;
+        }else{
+            Object row[] = list.get(0);
+            Admin u = new Admin((long) row[0], (String) row[1], (String) row[2], (String) row[3], (String) row[4]);
+            return u;
+        }
+    }
 }

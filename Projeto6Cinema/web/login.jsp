@@ -4,52 +4,38 @@
     Author     : Daniel B. Silva
 --%>
 
+<%@page import="br.com.fatecpg.cinema.Cliente"%>
+<%@page import="br.com.fatecpg.cinema.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-    String path = request.getContextPath();
     String errorMessage = null;
+     String opcao = null;
     if(request.getParameter("formLogin")!=null){
         String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
-        User u = User.getUser(login, pass);
-        if(u==null){
-            errorMessage = "Usuário e/ou senha inválido(s)";
-        }else{
-            session.setAttribute("user", u);
-            response.sendRedirect(request.getRequestURI());
+        String senha = request.getParameter("senha");
+       opcao = request.getParameter("usuario");
+        if(opcao.hashCode() == 146716317){
+            Admin u = Admin.getAdmin(login, senha);
+            if(u == null){
+                errorMessage = "Usuário e/ou senha inválido(s)";
+            }else{
+                session.setAttribute("usuario", u);
+                response.sendRedirect("administrador.jsp");
+            }
+        }else if(opcao.hashCode() == -1769726502){
+            Cliente u = Cliente.getCliente(login, senha);
+            if(u == null){
+                errorMessage = "Usuário e/ou senha inválido(s)";
+            }else{
+                session.setAttribute("usuario", u);
+                response.sendRedirect("cliente.jsp");
+            }
         }
+        
     }
-    if(request.getParameter("formLogoff")!=null){
-        session.removeAttribute("user"); 
-        response.sendRedirect(request.getRequestURI());
-    }
+    
 %>
-<h1>Parking WebApp</h1>
-<%if(errorMessage!=null){%>
-<h3 style="color: red"><%= errorMessage %></h3>
-<%}%>
-<%if(session.getAttribute("user")==null){%>
-<form method="post">
-    Login:<input type="text" name="login"/>
-    Pass:<input type="password" name="pass"/>
-    <input type="submit" name="formLogin" value="Entrar"/>
-</form>
-<%}else{%>
-<form>
-    <% User user = (User) session.getAttribute("user"); %>
-    Bem vindo, <%= user.getName()%> [<%= user.getRole() %>]
-    <input type="submit" name="formLogoff" value="Sair"/>
-</form>
-<h2>
-    <a href="<%=path%>/home.jsp"> HOME</a>
-    || <a href="<%=path%>/operation/prices.jsp"> PREÇOS</a>
-    <%if(user.getRole().equals("ADMIN")){%>
-    || [<a href="<%=path%>/admin/users.jsp">USUÁRIO</a>]
-    <%}%>
-</h2>
-
-<%}%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -57,6 +43,28 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Hello World!</h1>
+        <h1>Iniciar Sessão</h1>
+<%if(errorMessage!=null){%>
+<h3 style="color: red"><%= errorMessage %></h3>
+<h3 style="color: red"><%= opcao.hashCode() %></h3>
+<%}%>
+
+
+
+        
+            <fieldset>
+                <legend>Login</legend>
+                <form><br/>
+                    <select name="usuario">
+                        <option >Administrador</option>
+                        <option >Cliente</option>
+                    </select><br/><br/>
+                    Seu login é seu CPF cadastrado, portanto digite-o, apenas os números: <br/><input type="text" name="login"/><br/><br/>
+                    
+                    Digite uma senha:<br/> <input type="password" name="senha"/><br/><br/>
+                    <input type="submit" name="formLogin" value="Cadastrar"/>
+                </form>
+            </fieldset>
+            
     </body>
 </html>

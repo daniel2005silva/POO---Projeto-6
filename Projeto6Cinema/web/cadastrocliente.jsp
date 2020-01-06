@@ -10,8 +10,8 @@
 <%
     String error = null;
     String mensagem = null;
-    String senha = null;
-    String senharep = null;
+    String senha = "";
+    String senharep = "";
     try{
     if(request.getParameter("formNewCliente")!=null){
         String login = request.getParameter("login");
@@ -20,7 +20,7 @@
         String email = request.getParameter("email");
          senha = request.getParameter("senha");
          senharep = request.getParameter("senharep");
-        if(senha != senharep){
+        if(senha.hashCode() != senharep.hashCode()){
                 mensagem = "As senhas digitadas não são as mesmas!";
         }else{
                 
@@ -55,8 +55,8 @@
                     Digite seu nome:<br/><input type="text" name="nome"/><br/><br/>
                     Digite sua data de nascimento:<br/><input type="date" name="dtnascimento"/><br/><br/>
                     Digite um email de contato caso tenha:<br/><input type="email" name="email"/><br/><br/>
-                    Digite uma senha:<br/> <input type="text" name="senha"/><br/><br/>
-                    Repita a senha digitada:<br/> <input type="text" name="senharep"/><br/><br/>
+                    Digite uma senha:<br/> <input type="password" name="senha"/><br/><br/>
+                    Repita a senha digitada:<br/> <input type="password" name="senharep"/><br/><br/>
                     <input type="submit" name="formNewCliente" value="Cadastrar"/>
                 </form>
             </fieldset>

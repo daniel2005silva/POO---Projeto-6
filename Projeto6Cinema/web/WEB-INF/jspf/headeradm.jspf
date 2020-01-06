@@ -1,0 +1,24 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="br.com.fatecpg.cinema.Admin"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+ if(request.getParameter("formLogoff")!=null){
+        session.removeAttribute("usuario"); 
+        response.sendRedirect("login.jsp");
+    }
+%>
+<% String path = request.getContextPath();%>
+<h2><a href="<%=path%>/administrador.jsp"> INICIO DA SESSÃO</a>
+|| <a href="<%=path%>/filme.jsp"> CADASTRAR FILMES</a>
+|| <a href="<%=path%>/funcionario.jsp"> VER FUNCIONÁRIOS</a>
+</h2>
+ <%if(session.getAttribute("usuario")!=null){%>
+    <form>
+    <% Admin adm = (Admin) session.getAttribute("usuario"); %>
+    Bem vindo, <%= adm.getNomeadm()%> [<%= adm.getCargoadm() %>]
+    <input type="submit" name="formLogoff" value="Sair"/>
+    </form>
+
+<%} %>
+    
+<hr/>
