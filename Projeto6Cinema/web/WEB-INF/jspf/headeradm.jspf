@@ -11,6 +11,7 @@
 <h2><a href="<%=path%>/administrador.jsp"> INICIO DA SESSÃO</a>
 || <a href="<%=path%>/filme.jsp"> CADASTRAR FILMES</a>
 || <a href="<%=path%>/funcionario.jsp"> VER FUNCIONÁRIOS</a>
+|| <a href="<%=path%>/programacao.jsp"> ALTERAR PROGRAMAÇÃO</a>
 </h2>
  <%if(session.getAttribute("usuario")!=null){%>
     <form>

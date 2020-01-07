@@ -3,7 +3,7 @@
 <% String path = request.getContextPath();%>
 <h2><a href="<%=path%>/index.jsp"> HOME</a>
 || <a href="<%=path%>/login.jsp"> LOGIN</a>
-|| <a href="<%=path%>/tipousuario.jsp"> SE CADASRTRAR</a>
+|| <a href="<%=path%>/cadastrocliente.jsp"> SE CADASRTRAR</a>
 </h2>
  
     

@@ -4,12 +4,27 @@
     Author     : Daniel B. Silva
 --%>
 
-<%@page import="javax.swing.JOptionPane"%>
 <%@page import="br.com.fatecpg.cinema.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     String error = null;
+    if(request.getParameter("formEditUser")!=null){
+        try{
+            
+        long id = Long.parseLong(request.getParameter("id"));
+                String login = request.getParameter("login");
+                String senha = request.getParameter("senha");
+                String nome= request.getParameter("nome");
+                String cargo = request.getParameter("cargo");
+                Admin.editAdmin(login, senha, nome, cargo, id);
+                response.sendRedirect(request.getRequestURI());
+           
+            
+        }catch(Exception e){
+            error = e.getMessage();
+        }
+    }
     if(request.getParameter("formDeleteUser")!=null){
         try{
             
@@ -82,42 +97,40 @@
                     </td>
                     <td>
                         <form>
-                            <input type="hidden" name="id" value="<%=u.getId()%>"/>
-                            <input type="submit" name="formEditUser" value="Editar"/>
+                            <input type="hidden" name="login" value="<%=u.getCpfadm()%>"/>
+                            <input type="hidden" name="senha" value="<%=u.getSenhaadm()%>"/>
+                            <input type="submit" name="formEdit" value="Editar"/>
                         </form>
                     </td>
                 </tr>
                 <%}%>
             </table>
+            
+            <%
+           if(request.getParameter("formEdit")!=null){
+        try{
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
+            Admin u = Admin.getAdmin(login, senha);
+            %>
             <fieldset>
                 <legend>Editar administrador</legend>
                 <form><br/>
-                      
-                    Login - CPF: <br/><input type="number" name="login" value=""/><br/><br/>
-                    Senha:<br/> <input type="password" name="senha" value=""/><br/><br/>
-                    Nome:<br/><input type="text" name="nome" value=""/><br/><br/>
-                    Cargo:<br/><input type="text" name="cargo" value=""/><br/><br/>
+                    <%=u.getId()%><input type="hidden" name="id" value="<%=u.getId()%>"/> <br/><br/>
+                    Login - CPF: <br/><input type="text" name="login" value="<%=u.getCpfadm()%>"/><br/><br/>
+                    Senha:<br/> <input type="text" name="senha" value="<%=u.getSenhaadm()%>"/><br/><br/>
+                    Nome:<br/><input type="text" name="nome" value="<%=u.getNomeadm()%>"/><br/><br/>
+                    Cargo:<br/><input type="text" name="cargo" value="<%=u.getCargoadm()%>"/><br/><br/>
                     
-                    <input type="submit" name="formEditUser" value="Cadastrar"/>
+ 
+                    <input type="submit" name="formEditUser" value="Salvar"/>
                 </form>
             </fieldset>
             <%
-           if(request.getParameter("formEditUser")!=null){
-        try{
-            
-                long id = Long.parseLong(request.getParameter("id"));
-                String login = request.getParameter("login");
-                String senha = request.getParameter("senha");
-                String nome= request.getParameter("nome");
-                String cargo = request.getParameter("cargo");
-                Admin.editAdmin(login, senha, nome, cargo, id);
-                response.sendRedirect(request.getRequestURI());
-           
-            
-        }catch(Exception e){
+             }catch(Exception e){
             error = e.getMessage();
         }
-    }
+    }   
     %>
     </body>
 </html>

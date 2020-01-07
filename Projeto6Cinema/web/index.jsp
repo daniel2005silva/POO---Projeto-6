@@ -36,15 +36,13 @@ CREATE TABLE sessaofilme(
     , nome_filme varchar(50) not null
     , url_trailer varchar(100) not null
     , sinopse varchar(500) not null
-    , valor_sessao numeric(10,2) not null
+    , valor_sessao double not null
     , sala varchar(30) not null
-    , horario date not null
+    , horario varchar(10) not null
     , total_poltrona int not null
-    , id_administrador int not null
-    CONSTRAINT fk_sessaofilme_admi
-	FOREIGN KEY (id_administrador)
-	REFERENCES admi (id)
+    , urlcapa varchar(100) not null
 );
+
 
 DROP TABLE cliente;
 CREATE TABLE cliente(
@@ -78,6 +76,15 @@ CREATE TABLE funcionario(
     , nome varchar(30) not null
 );
 
+CREATE TABLE programacao(
+    id BIGINT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1)
+    , inicio varchar(15) not null
+    , fim varchar(15) not null
+);
+        
+        
 INSERT INTO admi VALUES
 (default, '22222222222', '1234', 'Daniel', 'Chefe');
 

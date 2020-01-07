@@ -4,6 +4,7 @@
     Author     : Daniel B. Silva
 --%>
 
+<%@page import="br.com.fatecpg.cinema.Programacao"%>
 <%@page import="br.com.fatecpg.cinema.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +17,12 @@
     <body>
 <%@include file="WEB-INF/jspf/headeradm.jspf" %>
 
-
-        <h1>Hello World!</h1>
+ <%
+           
+            
+            Programacao p = Programacao.getProgramacao(1);
+            %>
+        <h1>Filmes de <%= p.getInicio()%> até <%= p.getFim()%></h1>
+         
     </body>
 </html>

@@ -57,7 +57,7 @@
                 <form><br/>
                     <select name="usuario">
                         <option >Administrador</option>
-                        <option >Cliente</option>
+                        <option selected="selected">Cliente</option>
                     </select><br/><br/>
                     Seu login é seu CPF cadastrado, portanto digite-o, apenas os números: <br/><input type="text" name="login"/><br/><br/>
                     
