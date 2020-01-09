@@ -14,9 +14,14 @@
         try{
             
         long id = Long.parseLong(request.getParameter("id"));
-                String inicio = request.getParameter("inicio");
-                String fim = request.getParameter("fim");
-               
+                String diainicio = request.getParameter("diainicio");
+                String diafim = request.getParameter("diafim");
+                String mesinicio = request.getParameter("mesinicio");
+                String mesfim = request.getParameter("mesfim");
+                String anoinicio = request.getParameter("anoinicio");
+                String anofim = request.getParameter("anofim");
+                String inicio = diainicio + "/" + mesinicio + "/" + anoinicio;
+                String fim = diafim + "/" + mesfim + "/" + anofim;
                 Programacao.editProgramacao(inicio, fim, id);
                 response.sendRedirect(request.getRequestURI());
            
@@ -30,6 +35,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <title>JSP Page</title>
     </head>
     <body>
@@ -59,7 +65,7 @@
                             <input type="submit" name="formEdit" value="Editar"/>
                         </form>
                     </td>
-               
+                
                    </tr>
                            
                 <%}%>
@@ -76,11 +82,16 @@
                 <legend>Editar programação</legend>
                 <form><br/>
                     <%=p.getId()%><input type="hidden" name="id" value="<%=p.getId()%>"/> <br/><br/>
-                    Data de início da programação: <br/><input type="date" name="inicio" /><br/><br/>
-                    Data de fim da programação:<br/> <input type="date" name="fim" /><br/><br/>
+                    Data de início da programação: <br/><input type="text" name="diainicio" placeholder="dia" />
+                                                        <input type="text" name="mesinicio" placeholder="mês" />
+                                                        <input type="text" name="anoinicio" placeholder="ano" /><br/><br/>
+                    Data de fim da programação:<br/> <input type="text" name="diafim"  placeholder="dia"/>
+                                                     <input type="text" name="mesfim" placeholder="mês"/>
+                                                     <input type="text" name="anofim" placeholder="ano"/><br/><br/>
                     
                     <input type="submit" name="formEditProgramacao" value="Salvar"/>
                 </form>
+                    
             </fieldset>
             <%
              }catch(Exception e){

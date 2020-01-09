@@ -8,7 +8,9 @@
     }
 %>
 <% String path = request.getContextPath();%>
-<h2><a href="<%=path%>/administrador.jsp"> INICIO DA SESSÃO</a>
+<h2>
+<img alt="" src="http://3.bp.blogspot.com/-jaqAFVUWWGY/TteIkdQwrlI/AAAAAAAAABI/XEXxl5c8T_c/s1600/logo_cinemar_itanhaem.gif" style="height:70px; position: relative" >    
+    <a href="<%=path%>/administrador.jsp"> INICIO DA SESSÃO</a>
 || <a href="<%=path%>/filme.jsp"> CADASTRAR FILMES</a>
 || <a href="<%=path%>/funcionario.jsp"> VER FUNCIONÁRIOS</a>
 || <a href="<%=path%>/programacao.jsp"> ALTERAR PROGRAMAÇÃO</a>

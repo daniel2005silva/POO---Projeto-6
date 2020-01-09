@@ -6,7 +6,9 @@
 
 <%@page import="br.com.fatecpg.cinema.Filme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+
 <%
     String error = null;
     if(request.getParameter("formEditFilme")!=null){
@@ -14,14 +16,19 @@
             
         long id = Long.parseLong(request.getParameter("id"));
                 String nome_filme = request.getParameter("nome");
-                String url_trailer = request.getParameter("url");
+                String urlcapa = request.getParameter("urlcapa");
                 String sinopse= request.getParameter("sinopse");
-                double valor_sessao = Double.parseDouble(request.getParameter("valor"));
-                String sala = request.getParameter("sala");
+                String descricao = request.getParameter("descricao");
+                String dia_semana = request.getParameter("dia_semana");
                 String horario= request.getParameter("horario");
-                int total_poltrona = Integer.parseInt(request.getParameter("total"));
-                 String urlcapa = request.getParameter("urlcapa");
-                Filme.editFilme(nome_filme, url_trailer, sinopse, valor_sessao,sala,horario,total_poltrona, urlcapa, id);
+                String url_trailer = request.getParameter("url");
+                String estreia = request.getParameter("estreia");
+                if(estreia.hashCode() == 83127){
+                    estreia = "ESTREIA";
+                }else{
+                    estreia = "";
+                }
+                Filme.editFilme(nome_filme, urlcapa, sinopse, descricao, dia_semana, horario, url_trailer, estreia, id);
                 response.sendRedirect(request.getRequestURI());
            
             
@@ -44,15 +51,21 @@
     if(request.getParameter("formNewFilme")!=null){
         
         try{
-            String nome_filme = request.getParameter("nome");
-            String url_trailer = request.getParameter("url");
-            String sinopse= request.getParameter("sinopse");
-            double valor_sessao = Double.parseDouble(request.getParameter("valor"));
-            String sala = request.getParameter("sala");
-            String horario= request.getParameter("horario");
-            int total_poltrona = Integer.parseInt(request.getParameter("total"));
-            String urlcapa = request.getParameter("urlcapa");
-            Filme.addFilme(nome_filme, url_trailer, sinopse, valor_sessao, sala, horario, total_poltrona, urlcapa);
+                String nome_filme = request.getParameter("nome");
+                String urlcapa = request.getParameter("urlcapa");
+                String sinopse= request.getParameter("sinopse");
+                String descricao = request.getParameter("descricao");
+                String dia_semana = request.getParameter("dia_semana");
+                String horario= request.getParameter("horario");
+                String url_trailer = request.getParameter("url");
+                String estreia = request.getParameter("estreia");
+                if(estreia.hashCode() == 83127){
+                    //estou usando o hashCode porque não estou conseguindo fazerm comparações com strings aqui
+                    estreia = "ESTREIA";
+                }else{
+                    estreia = "";
+                }
+            Filme.addFilme(nome_filme, urlcapa, sinopse, descricao, dia_semana, horario, url_trailer, estreia);
            
                  
             
@@ -65,6 +78,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <title>JSP Page</title>
     </head>
     <body>
@@ -73,14 +87,22 @@
         <fieldset>
                 <legend>Novo Filme</legend>
                 <form><br/>
+                    É estreia?<br/><select name="estreia">
+                                        <option>Não</option>
+                                        <option>Sim</option>
+                                   </select><br/><br/>
                     Nome do filme: <br/><input type="text" name="nome"/><br/><br/>
-                    URL do trailler:<br/> <input type="text" name="url"/><br/><br/>
-                    Sinopse<br/><textarea  name="sinopse"/></textarea></<br/><br/>
-                    Valor da sessao inteira:<br/><input type="number" name="valor"/><br/><br/>
-                    Sala - 3D/2D: <br/><input type="text" name="sala"/><br/><br/>
-                    Horario:<br/> <input type="time" name="horario"/><br/><br/>
-                    Total de poltronas<br/> <input type="number" name="total"/><br/><br/>
                     URL da capa:<br/> <input type="text" name="urlcapa"/><br/><br/>
+                    Sinopse<br/><textarea  name="sinopse" style="width: 500px; height: 400px"/></textarea></<br/><br/>
+                    Descrição do filme:<br/><input type="text" name="descricao" /><br/>
+                    <p>Ex.: animação - livre - 104min. - dublado</p><br/><br/>
+                    Dias da semana: <br/><input type="text" name="dia_semana" placeholder=""/><br/>
+                    <p>Ex.: Segunda - Terça - Quarta - Quinta - Sexta</p><br/><br/>
+                    Horario:<br/> <input type="text" name="horario" /><br/>
+                    <p>Ex.: 13:30 - 16:00 - 18:30 - 21:00</p><br/><br/>
+                    URL do trailler:<br/> <input type="text" name="url"/><br/><br/>
+                    
+                    
                     <input type="submit" name="formNewFilme" value="Cadastrar"/>
                 </form>
             </fieldset>
@@ -90,16 +112,16 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome do filme</th>
-                    <th>URL do trailler</th>
-                    <th colspan="2">Sinopse</th>
+                    <th>URL da capa</th>
+                    <th colspan="2" >Sinopse</th>
                     <th >Comando</th>
                 </tr>
                     
                 <tr>
                     <td><%=f.getId()%></td>
                     <td><%=f.getNome_filme()%></td>
-                    <td><%=f.getUrl()%></td>
-                    <td colspan="2"><%=f.getSinopse()%></td>
+                    <td><%=f.getUrlcapa()%></td>
+                    <td colspan="2" ><%=f.getSinopse()%></td>
                      <td>
                         <form>
                             <input type="hidden" name="id" value="<%=f.getId()%>"/>
@@ -108,19 +130,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Valor da sessao</th>
-                    <th>Sala</th>
-                    <th>Horario</th>
-                    <th>Total de poltrona</th>
-                    <th>URL da capa</th>
-                    <th >Comando</th>
+                    <th>Estreia</th>
+                    <th>Descrição</th>
+                    <th>Dias da semana</th>
+                    <th>Horarios</th>
+                    <th>URL do trailer</th>
+                    <th>Comando</th>
                 </tr>
                 <tr>
-                    <td><%=f.getValor_sessao()%></td>
-                    <td><%=f.getSala()%></td>
+                    <td><%=f.getEstreia()%></td>
+                    <td><%=f.getDescricao()%></td>
+                    <td><%=f.getDia_semana()%></td>
                     <td><%=f.getHorario()%></td>
-                    <td><%=f.getTotal_poltrona()%></td>
-                    <td><%=f.getUrlcapa()%></td>
+                    <td><%=f.getUrl_trailer()%></td>
                    
                     <td>
                         <form>
@@ -144,14 +166,20 @@
                 <legend>Editar filmes</legend>
                 <form><br/>
                     <%=f.getId()%><input type="hidden" name="id" value="<%=f.getId()%>"/> <br/><br/>
+                    É estreia?<br/><select name="estreia">
+                                        <option>Não</option>
+                                        <option>Sim</option>
+                                   </select><br/><br/>
                     Nome do filme: <br/><input type="text" name="nome" value="<%=f.getNome_filme()%>"/><br/><br/>
-                    URL do trailler:<br/> <input type="text" name="url" value="<%=f.getUrl()%>"/><br/><br/>
-                    Sinopse<br/><textarea  name="sinopse" /><%=f.getSinopse()%></textarea></<br/><br/>
-                    Valor da sessao inteira:<br/><input type="text" name="valor" value="<%=f.getValor_sessao()%>"/><br/><br/>
-                    Sala - 3D/2D: <br/><input type="text" name="sala" value="<%=f.getSala()%>"/><br/><br/>
-                    Horario:<br/> <input type="text" name="horario" value="<%=f.getHorario()%>"/><br/><br/>
-                    Total de poltronas:<br/> <input type="text" name="total" value="<%=f.getTotal_poltrona()%>"/><br/><br/>
                     URL da capa:<br/> <input type="text" name="urlcapa" value="<%=f.getUrlcapa()%>"/><br/><br/>
+                    Sinopse<br/><textarea  name="sinopse" /><%=f.getSinopse()%></textarea></<br/><br/>
+                    Descrição do filme:<br/><input type="text" name="descricao" placeholder="animação - livre - 104min. - dublado" value="<%=f.getDescricao()%>"/>
+                    Dias da semana: <br/><input type="text" name="dia_semana" placeholder="separe os dias por - ou | " value="<%=f.getDia_semana()%>"/><br/><br/>
+                    Horario:<br/> <input type="text" name="horario" value="<%=f.getHorario()%>"/><br/><br/>
+                    URL do trailler:<br/> <input type="text" name="url" value="<%=f.getUrl_trailer()%>"/><br/><br/>
+                    
+                    
+                
                     <input type="submit" name="formEditFilme" value="Salvar"/>
                 </form>
             </fieldset>

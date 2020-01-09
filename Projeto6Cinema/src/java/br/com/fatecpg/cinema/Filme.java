@@ -7,35 +7,27 @@ import java.util.ArrayList;
 public class Filme {
     private long id;
     private String nome_filme;
-    private String url;
-    private String sinopse;
-    private double valor_sessao;
-    private String sala;
-    private String horario;
-    private int total_poltrona;
     private String urlcapa;
+    private String sinopse;
+    private String descricao;
+    private String dia_semana;
+    private String horario; 
+    private String url_trailer;
+    private String estreia;
 
-    public Filme(long id, String nome_filme, String url, String sinopse, double valor_sessao, String sala, String horario, int total_poltrona, String urlcapa) {
+    public Filme(long id, String nome_filme, String urlcapa, String sinopse, String descricao, String dia_semana, String horario, String url_trailer, String estreia) {
         this.id = id;
         this.nome_filme = nome_filme;
-        this.url = url;
-        this.sinopse = sinopse;
-        this.valor_sessao = valor_sessao;
-        this.sala = sala;
-        this.horario = horario;
-        this.total_poltrona = total_poltrona;
         this.urlcapa = urlcapa;
+        this.sinopse = sinopse;
+        this.descricao = descricao;
+        this.dia_semana = dia_semana;
+        this.horario = horario;
+        this.url_trailer = url_trailer;
+        this.estreia = estreia;
     }
-
-    public int getTotal_poltrona() {
-        return total_poltrona;
-    }
-
-    public void setTotal_poltrona(int total_poltrona) {
-        this.total_poltrona = total_poltrona;
-    }
-
-    public long getId() {
+    
+   public long getId() {
         return id;
     }
 
@@ -51,12 +43,12 @@ public class Filme {
         this.nome_filme = nome_filme;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlcapa() {
+        return urlcapa;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlcapa(String urlcapa) {
+        this.urlcapa = urlcapa;
     }
 
     public String getSinopse() {
@@ -67,20 +59,20 @@ public class Filme {
         this.sinopse = sinopse;
     }
 
-    public double getValor_sessao() {
-        return valor_sessao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setValor_sessao(double valor_sessao) {
-        this.valor_sessao = valor_sessao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getSala() {
-        return sala;
+    public String getDia_semana() {
+        return dia_semana;
     }
 
-    public void setSala(String sala) {
-        this.sala = sala;
+    public void setDia_semana(String dia_semana) {
+        this.dia_semana = dia_semana;
     }
 
     public String getHorario() {
@@ -90,14 +82,23 @@ public class Filme {
     public void setHorario(String horario) {
         this.horario = horario;
     }
-    
-     public String getUrlcapa() {
-        return urlcapa;
+
+    public String getUrl_trailer() {
+        return url_trailer;
     }
 
-    public void setUrlcapa(String urlcapa) {
-        this.urlcapa = urlcapa;
+    public void setUrl_trailer(String url_trailer) {
+        this.url_trailer = url_trailer;
     }
+    
+    public String getEstreia() {
+        return estreia;
+    }
+
+    public void setEstreia(String estreia) {
+        this.estreia = estreia;
+    }
+    
     
     
     public static Filme getFilme(long id) throws Exception{
@@ -108,7 +109,7 @@ public class Filme {
             return null;
         }else{
             Object row[] = list.get(0);
-            Filme f = new Filme((long) row[0], (String) row[1], (String) row[2], (String) row[3], (double) row[4], (String) row[5], (String) row[6], (int) row[7], (String) row[8]);
+            Filme f = new Filme((long) row[0], (String) row[1], (String) row[2], (String) row[3], (String) row[4], (String) row[5], (String) row[6], (String) row[7], (String) row[8]);
             return f;
         }
     }
@@ -120,13 +121,13 @@ public class Filme {
         ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
         for(int i=0; i<list.size();i++){
             Object row[] = list.get(i);
-            Filme f = new Filme((long) row[0], (String) row[1], (String) row[2], (String) row[3], (double) row[4], (String) row[5], (String) row[6], (int) row[7], (String) row[8]);
+            Filme f = new Filme((long) row[0], (String) row[1], (String) row[2], (String) row[3], (String) row[4], (String) row[5], (String) row[6], (String) row[7], (String) row[8]);
             filmes.add(f);
         }
         return filmes;
     }
     
-    public static void addFilme(String nome_filme, String url_trailer, String sinopse, double valor_sessao, String sala, String horario, int total_poltrona, String urlcapa) throws Exception{
+    public static void addFilme(String nome_filme, String urlcapa, String sinopse, String descricao, String dia_semana, String horario, String url_trailer, String estreia) throws Exception{
         String SQL = "INSERT INTO sessaofilme VALUES("
                + "default"
                + ", ?"
@@ -138,7 +139,7 @@ public class Filme {
                + ", ?"
                + ", ?"
                + ")";
-        Object parameters[] = {nome_filme, url_trailer, sinopse, valor_sessao, sala, horario, total_poltrona, urlcapa};
+        Object parameters[] = {nome_filme, urlcapa, sinopse, descricao, dia_semana, horario, url_trailer, estreia};
         DatabaseConnector.execute(SQL, parameters);
     }
     
@@ -148,10 +149,12 @@ public class Filme {
         DatabaseConnector.execute(SQL, parameters);
     }
     
-    public static void editFilme(String nome_filme, String url_trailer, String sinopse, double valor_sessao, String sala, String horario, int total_poltrona, String urlcapa, long id) throws Exception{
-        String SQL = "UPDATE sessaofilme SET nome_filme = ?, url_trailer = ?, sinopse = ?, valor_sessao = ?, sala = ?, horario = ?, total_poltrona = ?, urlcapa = ? WHERE id = ?";
-        Object parameters[] = {nome_filme, url_trailer, sinopse, valor_sessao, sala, horario, total_poltrona, urlcapa, id};
+    public static void editFilme(String nome_filme, String urlcapa, String sinopse, String descricao, String dia_semana, String horario, String url_trailer, String estreia,long id) throws Exception{
+        String SQL = "UPDATE sessaofilme SET nome_filme = ?, urlcapa = ?, sinopse = ?, descricao = ?, dia_semana = ?, horario = ?, url_trailer = ?, estreia = ? WHERE id = ?";
+        Object parameters[] = {nome_filme, urlcapa, sinopse, descricao, dia_semana, horario, url_trailer, estreia, id};
         DatabaseConnector.execute(SQL, parameters);
         
     }
+
+    
 }

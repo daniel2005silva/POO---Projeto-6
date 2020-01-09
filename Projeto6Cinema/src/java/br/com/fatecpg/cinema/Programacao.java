@@ -81,4 +81,30 @@ public class Programacao {
         DatabaseConnector.execute(SQL, parameters);
         
     }
+    
+   /* public static String getFilmes() throws Exception{
+        String programacao = null;
+        for(Filme f: Filme.getFilmes()){
+            
+            f.getUrl();
+            f.getSinopse();
+            f.getValor_sessao();
+           
+           
+            f.getTotal_poltrona();
+            
+            String variavelhtml = "<fieldset>"
+                    + f.getNome_filme()
+                    + "<img src='"+ f.getUrlcapa() +"'>"
+                    + f.getHorario()
+                    + f.getSala()
+                    + "</fieldset>";
+            
+            programacao = programacao +  variavelhtml;
+            
+        }
+        
+        
+        return programacao;
+    }*/
 }

@@ -4,16 +4,72 @@
     Author     : Daniel B. Silva
 --%>
 
+<%@page import="br.com.fatecpg.cinema.Filme"%>
+<%@page import="br.com.fatecpg.cinema.Programacao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body >
          <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Hello World!</h1>
+         <div class="jumbotron text-center" style="height: 300px; background-image: url('https://2.bp.blogspot.com/-Cf4Yhnsxtpk/XNhY8VM9rUI/AAAAAAAAQio/YTRIyOpF7nQMzVPoVL-ZRKyp4B9mM-XPACLcBGAs/s1600/Itanha%25C3%25A9m-Cinemar.02.2017.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <h3></h3><br/><br/>
+        <img src="https://2.bp.blogspot.com/--R3p2siv5HQ/WuoWGKrxgoI/AAAAAAAAAlA/tICzJqeUwjUFfgzi35EsXIcK_BiPK0y9QCK4BGAYYCw/s400/quarta%2Bmaluca.jpg" style="width: 300px"/>
+      <p>EXCETO FILME em SEMANA de ESTREIA NACIONAL</p>
+    </div>
+    <div class="col-sm-4">
+      <h3 >AGORA SOMOS 3D DIGITAL</h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQP4nHDTbX2eh3GtcGeQbd0nPJvjDgPaQJqtXmjl6q762_kkQ9z" style="height: 200px"/>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+        <h3 style="text-align: center">AGORA SOMOS 3D DIGITAL</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+       <%   Programacao p = Programacao.getProgramacao(1);  %>
+ 
+        <h1>Filmes de <%= p.getInicio()%> até <%= p.getFim()%></h1>
+         <%  for(Filme f: Filme.getFilmes()){ 
+            
+            %> <fieldset><%= f.getEstreia()%>
+                <legend style="font-size: 30px"><%= f.getNome_filme() %></legend>
+                    <img src="<%= f.getUrlcapa() %>" style="height:500px" >
+                    <br/>
+                    <br/>
+                    <%= f.getSinopse() %>
+                    <br/>
+                    <br/>
+                    <%= f.getDescricao() %>
+                    <br/>
+                    <br/>
+                    <%= f.getDia_semana() %>
+                    <br/>
+                    <br/>
+                    <%= f.getHorario() %>
+                    <br/>
+                    <br/> <iframe  width="700" height="344" src="<%= f.getUrl_trailer()%>" frameborder="0" allowfullscreen>
+    
+                    </iframe>
+                    </fieldset>
+           <% } %>
         <!--
         codigo para criar as tabelas no banco de dados, o nome do banco é cinemaita
          DROP TABLE admi;
@@ -34,13 +90,16 @@ CREATE TABLE sessaofilme(
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1)
     , nome_filme varchar(50) not null
-    , url_trailer varchar(100) not null
-    , sinopse varchar(500) not null
-    , valor_sessao double not null
-    , sala varchar(30) not null
+    , urlcapa varchar(300) not null
+    , sinopse varchar(1000) not null
+    , descricao varchar(50) not null
+    , dia_semana varchar(120) not null
     , horario varchar(10) not null
-    , total_poltrona int not null
-    , urlcapa varchar(100) not null
+    , url_trailer varchar(300) 
+    , estreia varchar(15) 
+    
+    
+    
 );
 
 
