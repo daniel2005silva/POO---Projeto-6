@@ -1,6 +1,12 @@
 <%-- any content can be specified here e.g.: --%>
 <%@page import="br.com.fatecpg.cinema.Admin"%>
-<%@ page pageEncoding="UTF-8" %>
+
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <%
  if(request.getParameter("formLogoff")!=null){
         session.removeAttribute("usuario"); 
@@ -8,20 +14,40 @@
     }
 %>
 <% String path = request.getContextPath();%>
-<h2>
-<img alt="" src="http://3.bp.blogspot.com/-jaqAFVUWWGY/TteIkdQwrlI/AAAAAAAAABI/XEXxl5c8T_c/s1600/logo_cinemar_itanhaem.gif" style="height:70px; position: relative" >    
-    <a href="<%=path%>/administrador.jsp"> INICIO DA SESS√ÉO</a>
-|| <a href="<%=path%>/filme.jsp"> CADASTRAR FILMES</a>
-|| <a href="<%=path%>/funcionario.jsp"> VER FUNCION√ÅRIOS</a>
-|| <a href="<%=path%>/programacao.jsp"> ALTERAR PROGRAMA√á√ÉO</a>
-</h2>
- <%if(session.getAttribute("usuario")!=null){%>
-    <form>
-    <% Admin adm = (Admin) session.getAttribute("usuario"); %>
-    Bem vindo, <%= adm.getNomeadm()%> [<%= adm.getCargoadm() %>]
-    <input type="submit" name="formLogoff" value="Sair"/>
-    </form>
 
-<%} %>
+ 
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+        
+      <a class="navbar-brand" href="<%=path%>/administrador.jsp">
+           <img alt="" src="http://3.bp.blogspot.com/-jaqAFVUWWGY/TteIkdQwrlI/AAAAAAAAABI/XEXxl5c8T_c/s1600/logo_cinemar_itanhaem.gif" style="height:40px; position: relative" >    
+   
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=path%>/filme.jsp">CADASTRAR FILMES</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=path%>/funcionario.jsp">VER FUNCION¡RIOS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=path%>/programacao.jsp">ALTERAR PROGRAMA«√O</a>
+    </li >
+     <li class="nav-item ">
+        <%if(session.getAttribute("usuario")!=null){%>
+            <% Admin adm = (Admin) session.getAttribute("usuario"); %>
+            <a class="nav-link">
+            Bem vindo, <%= adm.getNomeadm()%> [<%= adm.getCargoadm() %>]
+            </a>
+         <%} %>
+     </li>
+     <li class="nav-item " >
+     <form>
     
-<hr/>
+        <input type="submit" name="formLogoff" value="Sair"/>
+        </form>
+    </li>
+  </ul>
+</nav>
+     

@@ -5,7 +5,8 @@
 --%>
 
 <%@page import="br.com.fatecpg.cinema.Cliente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%
     String error = null;
@@ -21,7 +22,7 @@
          senha = request.getParameter("senha");
          senharep = request.getParameter("senharep");
         if(senha.hashCode() != senharep.hashCode()){
-                mensagem = "As senhas digitadas n√£o s√£o as mesmas!";
+                mensagem = "As senhas digitadas n„o s„o as mesmas!";
         }else{
                 
                 Cliente.addCliente(login, senha, nome, dtnascimento, email); 
@@ -42,7 +43,7 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Novo Usu√°rio</h1>
+        <h1>Novo Usu·rio</h1>
           <%if(mensagem != null){%>
         <h3 style="color: red"><%= mensagem  %></h3>
         <h3 style="color: red"><%= senha  %></h3>
@@ -52,7 +53,7 @@
             <fieldset>
                 <legend>Novo Cliente</legend>
                 <form><br/>
-                    Seu login ser√° o seu CPF, portanto digite-o, apenas os n√∫meros: <br/><input type="text" name="login"/><br/><br/>
+                    Seu login ser· o seu CPF, portanto digite-o, apenas os n˙meros: <br/><input type="text" name="login"/><br/><br/>
                     Digite seu nome:<br/><input type="text" name="nome"/><br/><br/>
                     Digite sua data de nascimento:<br/><input type="date" name="dtnascimento"/><br/><br/>
                     Digite um email de contato caso tenha:<br/><input type="email" name="email"/><br/><br/>

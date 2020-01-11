@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="br.com.fatecpg.cinema.Filme"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 
@@ -60,7 +60,7 @@
                 String url_trailer = request.getParameter("url");
                 String estreia = request.getParameter("estreia");
                 if(estreia.hashCode() == 83127){
-                    //estou usando o hashCode porque nÃ£o estou conseguindo fazerm comparaÃ§Ãµes com strings aqui
+                    //estou usando o hashCode porque não estou conseguindo fazerm comparações com strings aqui
                     estreia = "ESTREIA";
                 }else{
                     estreia = "";
@@ -87,17 +87,17 @@
         <fieldset>
                 <legend>Novo Filme</legend>
                 <form><br/>
-                    Ã‰ estreia?<br/><select name="estreia">
-                                        <option>NÃ£o</option>
+                    É estreia?<br/><select name="estreia">
+                                        <option>Não</option>
                                         <option>Sim</option>
                                    </select><br/><br/>
                     Nome do filme: <br/><input type="text" name="nome"/><br/><br/>
                     URL da capa:<br/> <input type="text" name="urlcapa"/><br/><br/>
                     Sinopse<br/><textarea  name="sinopse" style="width: 500px; height: 400px"/></textarea></<br/><br/>
-                    DescriÃ§Ã£o do filme:<br/><input type="text" name="descricao" /><br/>
-                    <p>Ex.: animaÃ§Ã£o - livre - 104min. - dublado</p><br/><br/>
+                    Descrição do filme:<br/><input type="text" name="descricao" /><br/>
+                    <p>Ex.: animação - livre - 104min. - dublado</p><br/><br/>
                     Dias da semana: <br/><input type="text" name="dia_semana" placeholder=""/><br/>
-                    <p>Ex.: Segunda - TerÃ§a - Quarta - Quinta - Sexta</p><br/><br/>
+                    <p>Ex.: Segunda - Terça - Quarta - Quinta - Sexta</p><br/><br/>
                     Horario:<br/> <input type="text" name="horario" /><br/>
                     <p>Ex.: 13:30 - 16:00 - 18:30 - 21:00</p><br/><br/>
                     URL do trailler:<br/> <input type="text" name="url"/><br/><br/>
@@ -131,7 +131,7 @@
                 </tr>
                 <tr>
                     <th>Estreia</th>
-                    <th>DescriÃ§Ã£o</th>
+                    <th>Descrição</th>
                     <th>Dias da semana</th>
                     <th>Horarios</th>
                     <th>URL do trailer</th>
@@ -166,14 +166,14 @@
                 <legend>Editar filmes</legend>
                 <form><br/>
                     <%=f.getId()%><input type="hidden" name="id" value="<%=f.getId()%>"/> <br/><br/>
-                    Ã‰ estreia?<br/><select name="estreia">
-                                        <option>NÃ£o</option>
+                    É estreia?<br/><select name="estreia">
+                                        <option>Não</option>
                                         <option>Sim</option>
                                    </select><br/><br/>
                     Nome do filme: <br/><input type="text" name="nome" value="<%=f.getNome_filme()%>"/><br/><br/>
                     URL da capa:<br/> <input type="text" name="urlcapa" value="<%=f.getUrlcapa()%>"/><br/><br/>
                     Sinopse<br/><textarea  name="sinopse" /><%=f.getSinopse()%></textarea></<br/><br/>
-                    DescriÃ§Ã£o do filme:<br/><input type="text" name="descricao" placeholder="animaÃ§Ã£o - livre - 104min. - dublado" value="<%=f.getDescricao()%>"/>
+                    Descrição do filme:<br/><input type="text" name="descricao" placeholder="animação - livre - 104min. - dublado" value="<%=f.getDescricao()%>"/>
                     Dias da semana: <br/><input type="text" name="dia_semana" placeholder="separe os dias por - ou | " value="<%=f.getDia_semana()%>"/><br/><br/>
                     Horario:<br/> <input type="text" name="horario" value="<%=f.getHorario()%>"/><br/><br/>
                     URL do trailler:<br/> <input type="text" name="url" value="<%=f.getUrl_trailer()%>"/><br/><br/>
