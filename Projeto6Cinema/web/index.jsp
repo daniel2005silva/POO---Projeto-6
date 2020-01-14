@@ -16,17 +16,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
         <title>JSP Page</title>
     </head>
-    <body >
+    <body class="fundo">
          <%@include file="WEB-INF/jspf/header.jspf" %>
-         <div class="jumbotron text-center" style="height: 300px; background-image: url('https://2.bp.blogspot.com/-Cf4Yhnsxtpk/XNhY8VM9rUI/AAAAAAAAQio/YTRIyOpF7nQMzVPoVL-ZRKyp4B9mM-XPACLcBGAs/s1600/Itanha%25C3%25A9m-Cinemar.02.2017.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
-  
+        
+    <center>
 <div class="container">
-  <div class="row">
+    <br/><br/><br/>
+    <div class="row">
+        
+     <div class="col-sm-12" style="height: 300px; background-image: url('https://2.bp.blogspot.com/-Cf4Yhnsxtpk/XNhY8VM9rUI/AAAAAAAAQio/YTRIyOpF7nQMzVPoVL-ZRKyp4B9mM-XPACLcBGAs/s1600/Itanha%25C3%25A9m-Cinemar.02.2017.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
+ 
+        </div>
+    
+  
     <div class="col-sm-4">
         <h3></h3><br/><br/>
         <img src="https://2.bp.blogspot.com/--R3p2siv5HQ/WuoWGKrxgoI/AAAAAAAAAlA/tICzJqeUwjUFfgzi35EsXIcK_BiPK0y9QCK4BGAYYCw/s400/quarta%2Bmaluca.jpg" style="width: 300px"/>
@@ -43,7 +48,8 @@
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
     </div>
   </div>
-</div>
+
+    
        <%   Programacao p = Programacao.getProgramacao(1);  %>
  
         <h1>Filmes de <%= p.getInicio()%> até <%= p.getFim()%></h1>
@@ -69,7 +75,11 @@
     
                     </iframe>
                     </fieldset>
+                    <hr class="divisao"/>
            <% } %>
+    
+</div>
+           </center>
         <!--
         codigo para criar as tabelas no banco de dados, o nome do banco é cinemaita
          DROP TABLE admi;
