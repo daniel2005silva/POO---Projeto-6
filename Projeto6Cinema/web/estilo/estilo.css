@@ -18,3 +18,17 @@
     background-color: red;
     
 }
+li.nav-item{
+    font-size: 20px;
+    
+}
+li.nav-item:hover{
+   text-transform: uppercase;
+   
+}
+.jumbotron{
+    background: red;
+    position:relative;
+    bottom:0;
+    width:100%;
+}

@@ -6,26 +6,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
-<% String path = request.getContextPath();%>
-
-  
-  
-  <nav class="navbar navbar-expand-sm  navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
+       
         
-      <a class="navbar-brand" href="<%=path%>/index.jsp">
+        
+        
+<% String path = request.getContextPath();%>
+     <link rel="stylesheet" type="text/css" href="<%=path%>/estilo/estilo.css">
+  
+  
+  <nav class="navbar navbar-expand-sm  ">
+      
+  <ul class="navbar-nav " >
+    <li class="nav-item active " >
+        
+      <a class="navbar-brand " href="<%=path%>/index.jsp">
            <img alt="" src="http://3.bp.blogspot.com/-jaqAFVUWWGY/TteIkdQwrlI/AAAAAAAAABI/XEXxl5c8T_c/s1600/logo_cinemar_itanhaem.gif" style="height:40px; position: relative" >    
    
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=path%>/login.jsp">LOGIN</a>
+    <li class="nav-item ">
+        <a class="nav-link " href="<%=path%>/login.jsp"  style="color: white">login</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=path%>/cadastrocliente.jsp">SE CADASRTRAR</a>
+    <li class="nav-item ">
+        <a class="nav-link " href="<%=path%>/cadastrocliente.jsp"  style="color: white">criar conta</a>
     </li>
     
   </ul>
 </nav>
+        
