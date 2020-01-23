@@ -37,21 +37,25 @@
     %>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body class="fundo">
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <h1>Novo Usuário</h1>
+        <div class="container">
+        <h1>Novo Cliente</h1>
           <%if(mensagem != null){%>
         <h3 style="color: red"><%= mensagem  %></h3>
         <h3 style="color: red"><%= senha  %></h3>
         <h3 style="color: red"><%=  senharep %></h3>
 
         <%} %> 
-            <fieldset>
-                <legend>Novo Cliente</legend>
+           
                 <form><br/>
                     Seu login será o seu CPF, portanto digite-o, apenas os números: <br/><input type="text" name="login"/><br/><br/>
                     Digite seu nome:<br/><input type="text" name="nome"/><br/><br/>
@@ -61,8 +65,8 @@
                     Repita a senha digitada:<br/> <input type="password" name="senharep"/><br/><br/>
                     <input type="submit" name="formNewCliente" value="Cadastrar"/>
                 </form>
-            </fieldset>
-            
-            
+            <br/><br/>
+    </div>  
+         <%@include file="WEB-INF/jspf/footer.jspf" %>   
     </body>
 </html>

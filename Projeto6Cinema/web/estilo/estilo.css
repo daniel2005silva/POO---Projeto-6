@@ -26,9 +26,9 @@ li.nav-item:hover{
    text-transform: uppercase;
    
 }
-.jumbotron{
-    background: red;
-    position:relative;
-    bottom:0;
-    width:100%;
+.caixa{
+    width: 100%;
+}
+.table{
+    width: 100%;
 }

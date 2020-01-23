@@ -56,16 +56,47 @@
     %>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
+       <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<../estilo/estilo.css">
         <title>JSP Page</title>
     </head>
-    <body>
-        <%@include file="WEB-INF/jspf/headeradm.jspf" %>
-        <h1>Hello World!</h1>
-        <fieldset>
-                <legend>Novo administrador</legend>
-                <form><br/>
+    <body class="fundo">
+        <%@include file="../WEB-INF/jspf/headeradm.jspf" %>
+        <div class="container">
+             <%
+           if(request.getParameter("formEdit")!=null){
+        try{
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
+            Admin u = Admin.getAdmin(login, senha);
+            %>
+            <h1>Editar administrador <%=u.getId()%></h1>
+                <form>
+                    <input type="hidden" name="id" value="<%=u.getId()%>"/> <br/><br/>
+                    Login - CPF: <br/><input type="text" name="login" value="<%=u.getCpfadm()%>"/><br/><br/>
+                    Senha:<br/> <input type="text" name="senha" value="<%=u.getSenhaadm()%>"/><br/><br/>
+                    Nome:<br/><input type="text" name="nome" value="<%=u.getNomeadm()%>"/><br/><br/>
+                    Cargo:<br/><input type="text" name="cargo" value="<%=u.getCargoadm()%>"/><br/><br/>
+                    
+ 
+                    <input type="submit" name="formEditUser" value="Salvar"/>
+                </form>
+                    <hr class="divisao">
+            <%
+             }catch(Exception e){
+            error = e.getMessage();
+        }
+    }   
+    %>
+    
+        <h1>Novo administrador</h1>
+        
+                <form>
                     Seu login será o seu CPF, portanto digite-o, apenas os números: <br/><input type="number" name="login"/><br/><br/>
                     Digite uma senha:<br/> <input type="password" name="senha"/><br/><br/>
                     Digite seu nome:<br/><input type="text" name="nome"/><br/><br/>
@@ -73,9 +104,11 @@
                     
                     <input type="submit" name="formNewAdmin" value="Cadastrar"/>
                 </form>
-            </fieldset>
-            <table border="1">
-                <tr>
+        <br/>
+        <hr class="divisao">
+        <br/>
+        <table class="table" border="1">
+                <tr style="background: black; color: white;">
                     <th>ID</th>
                     <th>CPF - Login</th>
                     <th>Senha</th>
@@ -106,32 +139,9 @@
                 </tr>
                 <%}%>
             </table>
-            
-            <%
-           if(request.getParameter("formEdit")!=null){
-        try{
-            String login = request.getParameter("login");
-            String senha = request.getParameter("senha");
-            Admin u = Admin.getAdmin(login, senha);
-            %>
-            <fieldset>
-                <legend>Editar administrador</legend>
-                <form><br/>
-                    <%=u.getId()%><input type="hidden" name="id" value="<%=u.getId()%>"/> <br/><br/>
-                    Login - CPF: <br/><input type="text" name="login" value="<%=u.getCpfadm()%>"/><br/><br/>
-                    Senha:<br/> <input type="text" name="senha" value="<%=u.getSenhaadm()%>"/><br/><br/>
-                    Nome:<br/><input type="text" name="nome" value="<%=u.getNomeadm()%>"/><br/><br/>
-                    Cargo:<br/><input type="text" name="cargo" value="<%=u.getCargoadm()%>"/><br/><br/>
-                    
- 
-                    <input type="submit" name="formEditUser" value="Salvar"/>
-                </form>
-            </fieldset>
-            <%
-             }catch(Exception e){
-            error = e.getMessage();
-        }
-    }   
-    %>
+            <br/><br/>
+           
+        </div>
+        <%@include file="../WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

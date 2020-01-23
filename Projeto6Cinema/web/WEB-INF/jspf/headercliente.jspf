@@ -1,48 +1,47 @@
 <%-- any content can be specified here e.g.: --%>
-<%@page import="br.com.fatecpg.cinema.Admin"%>
 
+<%@page import="br.com.fatecpg.cinema.Cliente"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<%
+       
+  <%
  if(request.getParameter("formLogoff")!=null){
         session.removeAttribute("usuario"); 
         response.sendRedirect("../login.jsp");
     }
-%>
-<% String path = request.getContextPath();%>
-
- <link rel="stylesheet" type="text/css" href="<%=path%>/estilo/estilo.css">
-<nav class="navbar navbar-expand-sm  ">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
+%>   
         
-      <a class="navbar-brand" href="<%=path%>/admin/administrador.jsp">
+        
+<% String path = request.getContextPath();%>
+     <link rel="stylesheet" type="text/css" href="<%=path%>/estilo/estilo.css">
+  
+  
+  <nav class="navbar navbar-expand-sm  ">
+      
+  <ul class="navbar-nav " >
+    <li class="nav-item active " >
+        
+      <a class="navbar-brand " href="<%=path%>/cliente.jsp">
            <img alt="" src="http://3.bp.blogspot.com/-jaqAFVUWWGY/TteIkdQwrlI/AAAAAAAAABI/XEXxl5c8T_c/s1600/logo_cinemar_itanhaem.gif" style="height:40px; position: relative" >    
    
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=path%>/admin/filme.jsp" style="color: white">cadastrar filmes</a>
+    <li class="nav-item ">
+        <a class="nav-link " href="<%=path%>/perfil.jsp"  style="color: white">Perfil</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=path%>/admin/funcionario.jsp" style="color: white">ver funcionários</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=path%>/admin/programacao.jsp" style="color: white">alterar data da programação</a>
-    </li >
-     <li class="btn " style="background-color: white; color: red;">
+   <li class="btn " style="background-color: white; color: red;">
         <%if(session.getAttribute("usuario")!=null){%>
-            <% Admin adm = (Admin) session.getAttribute("usuario"); %>
+            <% Cliente cliente = (Cliente) session.getAttribute("usuario"); %>
             <a class="nav-link">
-            Bem vindo, <%= adm.getNomeadm()%> [<%= adm.getCargoadm() %>]
+            Bem vindo, <%= cliente.getNomecliente()%> 
             </a>
          <%} %>
      </li>
-     <li class="nav-item " > 
+    <li class="nav-item " > 
      <form style="margin: 10px 10px;">
     
         <input type="submit" name="formLogoff" value="Sair" class="btn " style="background-color: white"/>
@@ -50,4 +49,4 @@
     </li>
   </ul>
 </nav>
-     
+        

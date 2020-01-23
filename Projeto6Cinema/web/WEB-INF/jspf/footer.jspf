@@ -7,19 +7,63 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
        
+        <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
+  
+  
+<div class="jumbotron" style="background: red; position:relative; bottom:0; margin: -15px 0px; color: white;">
+    <center>
+        <h3 >MAIS INFORMAÇÕES - <img src="../outros/tel.png" style="height: 30px">TEL: 13 3422-6127 ou 3426-5778</h3>
+  <div class="row">
+      
+    <div class="col-sm-4">
+        <p>Para pagantes de meia entrada (ao pedir seu ingresso meia, apresente junto o comprovante do mesmo).
+            Se o ingresso for antecipado, trazer na compra e na hora da entrada.
+</p> 
+    </div>
         
-        
-        
+    
+    <div class="col-sm-4">
+        <p>Verifique a nova lei de meia de entrada</p>
 
-     <link rel="stylesheet" type="text/css" href="../../estilo/estilo.css">
-  
-  
-  <div class="jumbotron">
-  <h2>Panel Footer</h2>
-  <div class="panel panel-default">
-    <div class="panel-heading">Panel Heading</div>
-    <div class="panel-body">Panel Content</div>
-    <div class="panel-footer">Panel Footer</div>
+        <p>Documentos somente o original, não será aceito xerox ou em celular</p>
+
+
+    </div>
+    <div class="col-sm-4">
+        <p>Criança de 0 a 11 anos 11 meses e 29 dias
+
+        + de 60 anos
+
+        Estudante, com carteirinha
+        atualizada 2019, de acordo com a nova lei, emitida pela
+        une - ubes - anpg - dce (Não será aceito outro documento, nem xerox ou pelo celular)
+        com foto atual.
+        </p>
+    </div>
+     <div class="col-sm-12"> 
+      <h4 > Aceitamos cartão de DÉBITO e Vale Cultura (VERIFIQUE NA BILHETERIA AS
+          CONDIÇÕES)</h4>
+        <br/>
+    </div>
+      <div class="col-sm-3"> 
+          <img src="../outros/Master.jpg">
+      </div>
+      <div class="col-sm-3"> 
+          <img src="../outros/Visa.jpg">
+      </div>
+      <div class="col-sm-3"> 
+          <img src="../outros/Cabal-Debito.jpg">
+      </div>
+      <div class="col-sm-3"> 
+          <img src="../outros/Sicred.jpg">
+      </div>
   </div>
+    </center>
+    <div class="col-sm-12"><br/>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.4652701705354!2d-46.800079685701554!3d-24.19047928437428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d1d56e461d656f%3A0xc66ac6679c472b1d!2sCinemar%20Itanh%C3%A9m!5e0!3m2!1spt-BR!2sbr!4v1579294984335!5m2!1spt-BR!2sbr" height="450" frameborder="0" style="border:0; width: 100%;" allowfullscreen="">
+        
+    </iframe>
+    </div>
 </div>
         
+            

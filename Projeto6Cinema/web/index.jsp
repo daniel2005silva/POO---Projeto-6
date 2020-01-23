@@ -24,7 +24,7 @@
         
     <center>
 <div class="container">
-    <br/><br/><br/>
+    
     <div class="row">
         
      <div class="col-sm-12" style="height: 300px; background-image: url('https://2.bp.blogspot.com/-Cf4Yhnsxtpk/XNhY8VM9rUI/AAAAAAAAQio/YTRIyOpF7nQMzVPoVL-ZRKyp4B9mM-XPACLcBGAs/s1600/Itanha%25C3%25A9m-Cinemar.02.2017.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
@@ -32,20 +32,23 @@
         </div>
     
   
-    <div class="col-sm-4">
+    <div class="col-sm-4" style="color: red">
         <h3></h3><br/><br/>
         <img src="https://2.bp.blogspot.com/--R3p2siv5HQ/WuoWGKrxgoI/AAAAAAAAAlA/tICzJqeUwjUFfgzi35EsXIcK_BiPK0y9QCK4BGAYYCw/s400/quarta%2Bmaluca.jpg" style="width: 300px"/>
-      <p>EXCETO FILME em SEMANA de ESTREIA NACIONAL</p>
+      <p>Exceto filme em semana de esreia nacional</p>
     </div>
     <div class="col-sm-4">
       <h3 >AGORA SOMOS 3D DIGITAL</h3>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQP4nHDTbX2eh3GtcGeQbd0nPJvjDgPaQJqtXmjl6q762_kkQ9z" style="height: 200px"/>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      
     </div>
-    <div class="col-sm-4">
-        <h3 style="text-align: center">AGORA SOMOS 3D DIGITAL</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="col-sm-4" style="color: red">   
+        <br/><br/><br/>
+        <h4>INGRESSO INTEIRO</h4>
+        <br/>
+        <h5>DIGITAL: 20,00</h5>
+        <br/>
+        <h5>3D:      24,00</h5>
     </div>
   </div>
 <hr class="divisao"/>
@@ -71,7 +74,7 @@
                     <br/>
                     <%= f.getHorario() %>
                     <br/>
-                    <br/> <iframe  width="700" height="344" src="<%= f.getUrl_trailer()%>" frameborder="0" allowfullscreen>
+                    <br/> <iframe  style="width: 100%" height="344" src="<%= f.getUrl_trailer()%>" frameborder="0" allowfullscreen>
     
                     </iframe>
                     </fieldset>
@@ -80,6 +83,7 @@
     
 </div>
            </center>
+    <%@include file="WEB-INF/jspf/footer.jspf" %>
         <!--
         codigo para criar as tabelas no banco de dados, o nome do banco é cinemaita
          DROP TABLE admi;
@@ -173,6 +177,6 @@ ALTER TABLE bilhete
 	REFERENCES sessaofilme (id);  
             
             -->
-            <%@include file="WEB-INF/jspf/footer.jspf" %>
+            
     </body>
 </html>
